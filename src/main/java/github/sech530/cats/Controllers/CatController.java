@@ -46,4 +46,11 @@ public class CatController {
         return "Ok";
     }
 
+    @RequestMapping(
+            value = "/cat",
+            method = RequestMethod.GET)
+    public Cat getById(@RequestBody Map<String, Object> payload){
+        return catService.getById((Integer)payload.get("id"));
+    }
+
 }

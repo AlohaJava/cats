@@ -27,6 +27,11 @@ public class CatServiceImp implements CatService {
     }
 
     @Override
+    public Cat getById(int id) {
+        return repository.findById(id).orElseThrow();
+    }
+
+    @Override
     public void update(int id, String name, int age) {
         Cat cat = repository.findById(id).orElseThrow();
         cat.setAge(age);

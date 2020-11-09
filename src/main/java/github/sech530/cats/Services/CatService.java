@@ -11,6 +11,8 @@ public interface CatService {
 
     List<Cat> getAll();
 
+    Cat getById(int id);
+
     void update(int id, String name, int age);
 
     void delete(int id);
