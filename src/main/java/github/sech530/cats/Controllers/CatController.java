@@ -31,26 +31,26 @@ public class CatController {
     }
 
     @RequestMapping(
-            value = "/cats",
+            value = "/cats/{id}",
             method = RequestMethod.DELETE)
-    public String deleteCat(@RequestBody Map<String, Object> payload){
-        catService.delete((Integer) payload.get("id"));
+    public String deleteCat(@PathVariable Integer id){
+        catService.delete(id);
         return "Ok";
     }
 
     @RequestMapping(
             value = "/cats",
             method = RequestMethod.PATCH)
-    public String patchCat(@RequestBody Map<String, Object> payload){
-        catService.update((Integer) payload.get("id"),(String) payload.get("name"),(Integer) payload.get("age"));
+    public String patchCat(@RequestBody Cat cat){
+        catService.update(cat);
         return "Ok";
     }
 
     @RequestMapping(
-            value = "/cat",
+            value = "/cats/{id}",
             method = RequestMethod.GET)
-    public Cat getById(@RequestBody Map<String, Object> payload){
-        return catService.getById((Integer)payload.get("id"));
+    public Cat getById(@PathVariable Integer id){
+        return catService.getById(id);
     }
 
 }

@@ -23,7 +23,7 @@ public class CatServiceImp implements CatService {
 
     @Override
     public List<Cat> getAll() {
-        return repository.findAll();
+        return repository.findAllByOrderByAgeAsc();
     }
 
     @Override
@@ -32,11 +32,11 @@ public class CatServiceImp implements CatService {
     }
 
     @Override
-    public void update(int id, String name, int age) {
-        Cat cat = repository.findById(id).orElseThrow();
-        cat.setAge(age);
-        cat.setName(name);
-        repository.save(cat);
+    public void update(Cat cat) {
+        Cat oldCat = repository.findById(cat.getId()).orElseThrow();
+        oldCat.setAge(cat.getAge());
+        oldCat.setName(cat.getName());
+        repository.save(oldCat);
     }
 
     @Override

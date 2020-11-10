@@ -13,7 +13,7 @@ public interface CatService {
 
     Cat getById(int id);
 
-    void update(int id, String name, int age);
+    void update(Cat cat);
 
     void delete(int id);
 }
